@@ -7,7 +7,42 @@
 - **Notes** (standalone note management with sorting and searching)
 - **Weather** (displays local weather forecast to help plan your day)
 
-This project aims to showcase a robust SwiftUI architecture with local data persistence, user notifications, and Calendar/Weather integrations.
+This project showcases a robust SwiftUI architecture with local data persistence, user notifications, and Calendar/Weather integrations.
+
+---
+
+## Screenshots
+
+| Main TabView                     | To-Do List                        |
+|----------------------------------|-----------------------------------|
+| ![Main TabView](images/screenshot-main.png) | ![To-Do List](images/screenshot-todolist.png) |
+
+| Add Task                         | Task Detail                       |
+|----------------------------------|-----------------------------------|
+| ![Add Task](images/screenshot-addtask.png) | ![Task Detail](images/screenshot-taskdetail.png) |
+
+| Calendar                         | Journal                           |
+|----------------------------------|-----------------------------------|
+| ![Calendar View](images/screenshot-calendar.png) | ![Journal](images/screenshot-journal.png) |
+
+| Notes                            | Weather                           |
+|----------------------------------|-----------------------------------|
+| ![Notes List](images/screenshot-noteslist.png) | ![Weather](images/screenshot-weather.png) |
+
+| Settings                         |
+|----------------------------------|
+| ![Settings](images/screenshot-settings.png) |
+
+<details>
+<summary>Optional Dark Mode Examples</summary>
+
+| Main TabView (Dark) (Red)       | Main TabView (Dark) (Green)        |
+|---------------------------------|------------------------------------|
+| ![Dark Main](images/screenshot-main-dark.png) | ![Dark To-Do](images/screenshot-todolist-dark.png) |
+
+</details>
+
+---
 
 ## Features
 
@@ -40,6 +75,8 @@ This project aims to showcase a robust SwiftUI architecture with local data pers
    - Choose custom themes (color sets) and Dark Mode preference  
    - Adjust global font sizes for accessibility
 
+---
+
 ## Tech Stack
 
 - **SwiftUI** for the entire UI layer  
@@ -51,31 +88,46 @@ This project aims to showcase a robust SwiftUI architecture with local data pers
 - **MVVM-ish** architecture with singletons/managers like `TaskManager`, `NotesManager`, etc.  
 - **Xcode** 14+ / iOS 15+ compatible  
 
+---
+
 ## Architecture Overview
 
-- **`ContentView`**: Defines the main TabView controlling the major sections (To-Do, Calendar, Journal, Notes). Uses `@AppStorage` to conditionally show/hide each tab.  
-- **`TaskManager`**: Singleton to handle tasks (create, update, delete, sorting), plus user defaults storage.  
-- **`CalendarManager`**: Singleton that wraps `EventKit` for reading/writing calendar events.  
-- **`NotesManager`**: Creates, reads, updates, and deletes note objects, stored in user defaults.  
-- **`LocationManager`**: Fetches the user’s current location and triggers a `WeatherService` call to fetch the forecast.  
-- **`NotificationDelegate`**: Manages local notifications while the app is in foreground.
+- **`ContentView`**  
+  - Main `TabView` controlling the major sections (To-Do, Calendar, Journal, Notes)  
+  - Uses `@AppStorage` to show/hide each tab  
+- **`TaskManager`**  
+  - Singleton for creating, updating, deleting, sorting tasks  
+  - Saves to `UserDefaults` in JSON format  
+- **`CalendarManager`**  
+  - Singleton that wraps `EventKit` for reading/writing calendar events  
+- **`NotesManager`**  
+  - Creates, reads, updates, and deletes note objects, stored in `UserDefaults`  
+- **`LocationManager`**  
+  - Fetches the user’s current location and triggers a `WeatherService` call  
+- **`NotificationDelegate`**  
+  - Manages local notifications while the app is in the foreground  
+
+---
 
 ## Getting Started
 
-1. **Requirements**:  
+1. **Requirements**  
    - Xcode 14 or later  
-   - iOS 15 or later (Simulator or physical device)  
+   - iOS 15 or later (Simulator or physical device)
 
-2. **Build & Run**:  
+2. **Build & Run**  
    1. Clone the repository:  
       ```bash
       git clone https://github.com/mickelsamuel/AgendaMate.git
       ```
-   2. Open `AgendaMate.xcodeproj` (or the `.xcworkspace` if you have one).  
+   2. Open `AgendaMate.xcodeproj` (or `.xcworkspace` if present).  
    3. Select an iOS simulator or connected device.  
    4. Press **Run** (⌘R).
 
-3. **Permissions**:  
-   - The app requests location, notification, and calendar permissions at launch. Approve these for full functionality.
+3. **Permissions**  
+   - The app requests location, notification, and calendar permissions at launch.  
+   - Approve these for full functionality.
+
+---
 
 _Made with ♥ in SwiftUI_
