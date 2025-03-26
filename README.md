@@ -17,17 +17,13 @@ This project showcases a robust SwiftUI architecture with local data persistence
 |----------------------------------|-----------------------------------|
 | ![Main TabView](images/screenshot-main.png) | ![To-Do List](images/screenshot-todolist.png) |
 
-| Add Task                         | Task Detail                       |
+| Add Task                         | Calendar                          |
 |----------------------------------|-----------------------------------|
-| ![Add Task](images/screenshot-addtask.png) | ![Task Detail](images/screenshot-taskdetail.png) |
+| ![Add Task](images/screenshot-addtask.png) | ![Task Detail](images/screenshot-calendar.png) |
 
-| Calendar                         | Journal                           |
+| Notes                            | Journal                           |
 |----------------------------------|-----------------------------------|
-| ![Calendar View](images/screenshot-calendar.png) | ![Journal](images/screenshot-journal.png) |
-
-| Notes                            | Weather                           |
-|----------------------------------|-----------------------------------|
-| ![Notes List](images/screenshot-noteslist.png) | ![Weather](images/screenshot-weather.png) |
+| ![Notes List](images/screenshot-noteslist.png) | ![Journal](images/screenshot-journal.png) |
 
 | Settings                         |
 |----------------------------------|
