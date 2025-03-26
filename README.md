@@ -13,28 +13,28 @@ This project showcases a robust SwiftUI architecture with local data persistence
 
 ## Screenshots
 
-| Main TabView                     | To-Do List                        |
-|----------------------------------|-----------------------------------|
-| ![Main TabView](images/screenshot-main.png) | ![To-Do List](images/screenshot-todolist.png) |
+| Main TabView | To-Do List |
+|--------------|------------|
+| <img src="images/screenshot-main.PNG" alt="Main TabView" width="300"/> | <img src="images/screenshot-todolist.PNG" alt="To-Do List" width="300"/> |
 
-| Add Task                         | Calendar                          |
-|----------------------------------|-----------------------------------|
-| ![Add Task](images/screenshot-addtask.png) | ![Task Detail](images/screenshot-calendar.png) |
+| Add Task | Calendar |
+|----------|----------|
+| <img src="images/screenshot-addtask.PNG" alt="Add Task" width="300"/> | <img src="images/screenshot-main.PNG" alt="Calendar" width="300"/> |
 
-| Notes                            | Journal                           |
-|----------------------------------|-----------------------------------|
-| ![Notes List](images/screenshot-noteslist.png) | ![Journal](images/screenshot-journal.png) |
+| Notes | Journal |
+|-------|---------|
+| <img src="images/screenshot-noteslist.PNG" alt="Notes List" width="300"/> | <img src="images/screenshot-journal.PNG" alt="Journal" width="300"/> |
 
-| Settings                         |
-|----------------------------------|
-| ![Settings](images/screenshot-settings.png) |
+| Settings |
+|----------|
+| <img src="images/screenshot-settings.PNG" alt="Settings" width="300"/> |
 
 <details>
 <summary>Optional Dark Mode Examples</summary>
 
-| Main TabView (Dark) (Red)       | Main TabView (Dark) (Green)        |
-|---------------------------------|------------------------------------|
-| ![Dark Main](images/screenshot-main-dark.png) | ![Dark To-Do](images/screenshot-todolist-dark.png) |
+| Main TabView (Dark) (Red) | Main TabView (Dark) (Green) |
+|---------------------------|-----------------------------|
+| <img src="images/screenshot-main-dark.PNG" alt="Dark Main Red" width="300"/> | <img src="images/screenshot-todolist-dark.PNG" alt="Dark To-Do Green" width="300"/> |
 
 </details>
 
