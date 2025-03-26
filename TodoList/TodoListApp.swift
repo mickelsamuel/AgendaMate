@@ -5,12 +5,7 @@ import UserNotifications
 // setting up the notification and calendar permissions, and configuring the app's primary scene.
 @main
 struct TodoListApp: App {
-    // Reference to the shared persistence controller, which manages the Core Data stack for the app.
-    let persistenceController = PersistenceController.shared
-    
-    // StateObject to manage the app's lock state
-    @StateObject private var lockManager = AppLockManager()
-    
+
     // Environment property to detect app state changes
     @Environment(\.scenePhase) var scenePhase
 
@@ -18,32 +13,19 @@ struct TodoListApp: App {
     init() {
         // Request user notification permissions (alert, badge, sound).
         requestNotificationPermissions()
-        
+
         // Request access to the user's calendar.
         requestCalendarAccess()
-        
+
         // Set the notification delegate to handle incoming notifications while the app is running.
         UNUserNotificationCenter.current().delegate = NotificationDelegate.shared
     }
 
     var body: some Scene {
-        // Defines the main scene of the app, which uses either the ContentView or LockScreenView as the root view.
+        // Defines the main scene of the app, which uses ContentView as the root view.
         // The Core Data managed object context is passed down through the environment.
         WindowGroup {
-            Group {
-                if lockManager.isUnlocked {
-                    ContentView()
-                        .environment(\.managedObjectContext, persistenceController.container.viewContext)
-                } else {
-                    LockScreenView(isUnlocked: $lockManager.isUnlocked)
-                }
-            }
-            .environmentObject(lockManager)
-            .onChange(of: scenePhase) { newPhase in
-                if newPhase == .inactive || newPhase == .background {
-                    lockManager.lockApp()
-                }
-            }
+            ContentView()
         }
     }
 
