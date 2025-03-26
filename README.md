@@ -1,33 +1,81 @@
-AgendaMate
+# AgendaMate
 
-AgendaMate is a comprehensive iOS task management application that integrates key features such as task scheduling, journaling, note-taking, and real-time weather updates. Built using SwiftUI, this app also includes advanced security features like Face ID and passcode protection, and integrates with the device's calendar using EventKit.
+**AgendaMate** is a full-featured productivity and agenda app, combining:
+- **To-Do List Management** (tasks, categories, reminders)
+- **Calendar Integration** (create and edit events, schedule tasks)
+- **Journal** (daily entries with optional images)
+- **Notes** (standalone note management with sorting and searching)
+- **Weather** (displays local weather forecast to help plan your day)
 
-Features
+This project aims to showcase a robust SwiftUI architecture with local data persistence, user notifications, and Calendar/Weather integrations.
 
-Task Management: Create, categorize, and manage tasks efficiently.
-Journal & Notes: Integrated journal and note-taking features for daily use.
-Calendar Integration: Syncs seamlessly with your iOS calendar using EventKit for task scheduling and reminders.
-Weather Updates: Real-time weather updates integrated via a weather API.
-Security: Secure your tasks and data with Face ID and passcode protection.
-Customizable UI: Supports both light and dark modes with customizable themes and font sizes.
-Technologies Used
+## Features
 
-SwiftUI: For building a responsive and modern user interface.
-Core Data: To persist tasks, notes, and journal entries locally.
-EventKit: For calendar and event integration.
-Weather API: Fetch real-time weather updates.
-Face ID/Passcode: Security features for user authentication.
-App Storage: Persistent storage for user settings like dark mode, font size, and theme selection.
-Installation
+1. **To-Do List**  
+   - Create tasks with priority, category, tags, reminders, subtasks, and comments  
+   - Sort by title, due date, priority, tags, or drag-and-drop custom order  
+   - Completed tasks are automatically archived (with optional time filtering)
 
-Clone this repository:
-git clone https://github.com/mickelsamuel/AgendaMate.git
-Open the project in Xcode:
-open AgendaMate.xcodeproj
-Build and run the app on the iOS Simulator or your device.
-Usage
+2. **Calendar**  
+   - Built-in monthly calendar picker to jump to specific days  
+   - Sync tasks’ due dates to Apple Calendar (via `EventKit`)  
+   - Create new events from within the app, edit them, or delete them
 
-Add New Tasks: Tap the "+" button to create a new task, assign it a category, and set reminders via the calendar.
-Journal & Notes: Use the journal and notes tabs to log daily thoughts and important information.
-Weather Updates: View real-time weather updates to plan your tasks.
-Settings: Customize themes, font size, and security preferences under the settings tab.
+3. **Journal**  
+   - Daily entries, each with an optional date/time picker  
+   - Append images, comments, or tags  
+   - Save to local storage or user defaults
+
+4. **Notes**  
+   - Create freeform notes (title, content, date)  
+   - Sort notes by title, date, or custom order  
+   - Inline searching by text, plus CSV import/export
+
+5. **Weather**  
+   - Automatically retrieves current location and displays a 3-day forecast  
+   - Tapping or pulling new data refreshes the forecast
+
+6. **Settings**  
+   - Toggle the visibility of each major feature (To-Do, Journal, Notes, Calendar)  
+   - Choose custom themes (color sets) and Dark Mode preference  
+   - Adjust global font sizes for accessibility
+
+## Tech Stack
+
+- **SwiftUI** for the entire UI layer  
+- **Combine / ObservableObject** for reactive data flow  
+- **EventKit** for Apple Calendar integration  
+- **UserNotifications** for local reminder notifications  
+- **CoreLocation** + a custom `WeatherService` (using WeatherAPI) for geolocation and forecast data  
+- **UserDefaults / JSON** for local data persistence (both tasks and notes)  
+- **MVVM-ish** architecture with singletons/managers like `TaskManager`, `NotesManager`, etc.  
+- **Xcode** 14+ / iOS 15+ compatible  
+
+## Architecture Overview
+
+- **`ContentView`**: Defines the main TabView controlling the major sections (To-Do, Calendar, Journal, Notes). Uses `@AppStorage` to conditionally show/hide each tab.  
+- **`TaskManager`**: Singleton to handle tasks (create, update, delete, sorting), plus user defaults storage.  
+- **`CalendarManager`**: Singleton that wraps `EventKit` for reading/writing calendar events.  
+- **`NotesManager`**: Creates, reads, updates, and deletes note objects, stored in user defaults.  
+- **`LocationManager`**: Fetches the user’s current location and triggers a `WeatherService` call to fetch the forecast.  
+- **`NotificationDelegate`**: Manages local notifications while the app is in foreground.
+
+## Getting Started
+
+1. **Requirements**:  
+   - Xcode 14 or later  
+   - iOS 15 or later (Simulator or physical device)  
+
+2. **Build & Run**:  
+   1. Clone the repository:  
+      ```bash
+      git clone https://github.com/mickelsamuel/AgendaMate.git
+      ```
+   2. Open `AgendaMate.xcodeproj` (or the `.xcworkspace` if you have one).  
+   3. Select an iOS simulator or connected device.  
+   4. Press **Run** (⌘R).
+
+3. **Permissions**:  
+   - The app requests location, notification, and calendar permissions at launch. Approve these for full functionality.
+
+_Made with ♥ in SwiftUI_
